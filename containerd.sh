@@ -25,4 +25,12 @@ EOF
 # Apply sysctl params without reboot
 sudo sysctl --system
 
+sudo apt-get update
+sudo apt-get install containerd
+
+sudo mkdir -p /etc/containerd
+
+containerd config default | sudo tee /etc/containerd/config.toml
+
+sudo systemctl enable containerd
 sudo systemctl restart containerd
